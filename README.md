@@ -14,54 +14,54 @@ You may choose your preferred method of installation.
 > Windows users, change all occurrences of **`~/.vim`** to **`~\vimfiles.`**
 
 ##### Vimrc
-1. Run the following commands in a terminal:
+Run the following commands in a terminal:
 ```sh
 mkdir -p ~/.vim/bundle
 cd ~/.vim/bundle
 git clone https://github.com/webdevel/tabulous.git
 echo 'set runtimepath^=~/.vim/bundle/tabulous' >> ~/.vimrc
 ```
-2. Restart Vim.
+Restart Vim.
 
 ##### Pathogen
-1. Run the following commands in a terminal:
+Run the following commands in a terminal:
 ```sh
 mkdir -p ~/.vim/bundle
 cd ~/.vim/bundle
 git clone https://github.com/webdevel/tabulous.git
 ```
-2. Restart Vim.
+Restart Vim.
 
 ##### Vundle
 > If your Vundle version is less than `0.10.2,` change **`Plugin`** to **`Bundle`**.
 
-1. Enter this in your **`.vimrc`**:
+Enter this in your **`.vimrc`**:
 ```sh
 Plugin 'webdevel/tabulous'
 ```
-2. Then enter the following command-lines in Vim:
+Then enter the following command-lines in Vim:
 ```sh
 :source %
 :PluginInstall
 ```
 
 ##### NeoBundle
-1. Enter this in your **`.vimrc`**:
+Enter this in your **`.vimrc`**:
 ```sh
 NeoBundle 'webdevel/tabulous'
 ```
-2. Then enter the following command-lines in Vim:
+Then enter the following command-lines in Vim:
 ```sh
 :source %
 :NeoBundleInstall
 ```
 
 ##### VimPlug
-1. Enter this in your **`.vimrc`**:
+Enter this in your **`.vimrc`**:
 ```sh
 Plug 'webdevel/tabulous'
 ```
-2. Then enter the following command-lines in Vim:
+Then enter the following command-lines in Vim:
 ```sh
 :source %
 :PlugInstall
