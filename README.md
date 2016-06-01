@@ -9,7 +9,9 @@ Tabs display an indicator when a buffer has been modified and not saved.
 Dynamically updates the filename of the currently focused window in the tab page.  
 Eliminates inefficient use of string concatenation operator by using **`printf`** where possible.  
 Does not show filename extensions to preserve the amount of tab label space.  
-> In progress: dynamic resizing of tab page labels based on current line column count, configurable options and keyboard shortcuts.  
+Performs runtime calculation of maximum tab label length and truncates accordingly (Dynamic resizing of tab labels).  
+Options are configurable from **`.vimrc`**.  
+> In progress: keyboard shortcuts and enhancement of tab label truncation algorithm.  
 
 ---
 
@@ -84,12 +86,41 @@ Then enter the following command-lines in Vim:
 ---
 
 ### Configuration
-No configuration is necessary by default. However, there are options if you want to set them.
+No configuration is necessary by default. However, there are options if you want to set them. Any of the following configuration options may simply be added to a new line in your **`.vimrc`**.
 
 ##### Disable Plugin
-To disable the plugin, add the following line in your **`.vimrc`**:
+This disables the plugin entirely.
 ```sh
-let g:loadTabulous = 1
+let loadTabulous = 1
+```
+
+##### Tab Label Truncation
+This enables or disables tab page label truncation. The default is **`1`** enabled.
+```sh
+let tabulousLabelNameTruncate = 0
+```
+
+##### Tab Close
+This sets the tab close string for mouse clicks. The default is **`X`** enabled.
+```sh
+let tabulousCloseStr = ''
+```
+
+##### Tab Label Name Options
+This sets the tab label name options which may be valid [filename-modifiers] recognized by the Vim command **`fnamemodify`**. The defaults are **`:t:r`** which remove directories and file extension from a tab label name.
+```sh
+let tabulousLabelNameOptions = ''
+```
+
+##### Other Options
+Here are some other options shown with their defaults.
+```sh
+let tabulousLabelModifiedStr = '+'
+let tabulousLabelLeftStr = ' '
+let tabulousLabelRightStr = ' '
+let tabulousLabelNumberStr = ' '
+let tabulousLabelNameLeftStr = ''
+let tabulousLabelNameDefault = '[No Name]'
 ```
 
 ---
@@ -101,4 +132,6 @@ let g:loadTabulous = 1
 
 ### License
 *Tabulous* is free and open source software. It is licensed by the GNU General Public License version 2 (GPLv2).
+
+[filename-modifiers]: http://vimdoc.sourceforge.net/htmldoc/cmdline.html#filename-modifiers
 
