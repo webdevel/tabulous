@@ -14,8 +14,8 @@ Options are configurable from **`.vimrc`**.
 
 ##### Planned Features
 Keyboard shortcuts  
-Enhancement of tab label truncation algorithm
-Rename tab label
+Enhancement of tab label truncation algorithm  
+Rename tab label  
 > In progress: keyboard shortcuts and enhancement of tab label truncation algorithm.  
 
 ---
