@@ -1,5 +1,6 @@
 # *Tabulous*
 Lightweight Vim plugin to enhance the tabline including numbered tab page labels; it's written entirely in Vim script.
+
 ---
 
 ### Features
