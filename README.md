@@ -1,5 +1,5 @@
 # *Tabulous*
-Vim plugin for setting the tabline including the tab page labels. It is lightweight and written in pure Vim script.
+Lightweight Vim plugin to enhance the tabline including numbered tab page labels; it's written entirely in Vim script.
 
 ---
 
@@ -11,6 +11,11 @@ Eliminates inefficient use of string concatenation operator by using **`printf`*
 Does not show filename extensions to preserve the amount of tab label space.  
 Performs runtime calculation of maximum tab label length and truncates accordingly (Dynamic resizing of tab labels).  
 Options are configurable from **`.vimrc`**.  
+
+##### Planned Features
+Keyboard shortcuts  
+Enhancement of tab label truncation algorithm  
+Rename tab label  
 > In progress: keyboard shortcuts and enhancement of tab label truncation algorithm.  
 
 ---
@@ -112,14 +117,39 @@ This sets the tab label name options which may be valid [filename-modifiers] rec
 let tabulousLabelNameOptions = ''
 ```
 
-##### Other Options
-Here are some other options shown with their defaults.
+##### Tab Label Modified
+This sets the string that indicates the buffer associated with a tab has been modified, but not yet saved. The default value is shown below.
 ```sh
 let tabulousLabelModifiedStr = '+'
+```
+
+##### Tab Label Left
+This sets the string on the left of the tab label. The default value is shown below.
+```sh
 let tabulousLabelLeftStr = ' '
+```
+ 
+##### Tab Label Right
+This sets the string on the right of the tab label. The default value is shown below.
+```sh
 let tabulousLabelRightStr = ' '
+```
+ 
+##### Tab Label Number
+This sets the string on the right of the tab label number. The default value is shown below.
+```sh
 let tabulousLabelNumberStr = ' '
+```
+ 
+##### Tab Label Name Left
+This sets the string on the left of the tab label name. The default value is shown below.
+```sh
 let tabulousLabelNameLeftStr = ''
+```
+ 
+##### Tab Label Default Name
+This sets the default tab label name. The default value is shown below.
+```sh
 let tabulousLabelNameDefault = '[No Name]'
 ```
 
