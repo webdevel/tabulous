@@ -1,9 +1,9 @@
 " tabulous.vim - Lightweight Vim plugin for setting the tabline including the tab page labels.
-" File:		 tabulous.vim
+" File:          tabulous.vim
 " Location:      plugin/tabulous.vim
 " Author:        Steven Garcia <https://github.com/webdevel>
 " Description:   Lightweight Vim plugin for setting the tabline including the tab page labels.
-" Version:       0.2
+" Version:       0.4
 " License:       GNU GPLv2
 " GetLatestVimScripts: 5395 1 :AutoInstall: tabulous.vim
 
@@ -150,7 +150,13 @@ function! Tabulous() abort
 
 endfunction
 
+function! TabulousSetTabline() abort
+
 " since the number of tab labels will vary,
 " we need to use an expression when setting the tabline option
 set tabline=%!Tabulous()
+
+endfunction
+
+call TabulousSetTabline()
 
