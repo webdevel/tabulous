@@ -3,7 +3,7 @@
 " Location:      plugin/tabulous.vim
 " Author:        Steven Garcia <https://github.com/webdevel>
 " Description:   Lightweight Vim plugin for setting the tabline including the tab page labels.
-" Version:       0.4
+" Version:       0.5
 " License:       GNU GPLv2
 " GetLatestVimScripts: 5395 1 :AutoInstall: tabulous.vim
 
