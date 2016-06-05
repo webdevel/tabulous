@@ -1,10 +1,13 @@
 # *Tabulous*
 Lightweight Vim plugin to enhance the tabline including numbered tab page labels; it's written entirely in Vim script.
 
+![Tabulous](http://i.imgur.com/rrh3lIN.gif "Tabulous")
+
 ---
 
 ### Features
 Shows the tab page number on every tab label for quickly navigating to the desired tab **`<number>gt`**.  
+Rename the current tab page label.  
 Tabs display an indicator when a buffer has been modified and not saved.  
 Dynamically updates the filename of the currently focused window in the tab page.  
 Eliminates inefficient use of string concatenation operator by using **`printf`** where possible.  
@@ -13,9 +16,10 @@ Performs runtime calculation of maximum tab label length and truncates according
 Options are configurable from **`.vimrc`**.  
 
 ##### Planned Features
-Keyboard shortcuts  
 Enhancement of tab label truncation algorithm  
-Rename tab label  
+Toggle tab page numbers on and off by keyboard shortcut  
+Toggle tab label filename extensions on and off by keyboard shortcut  
+Toggle tab label truncation on and off by keyboard shortcut  
 > In progress: keyboard shortcuts and enhancement of tab label truncation algorithm.  
 
 ---
@@ -86,6 +90,18 @@ Then enter the following command-lines in Vim:
 ```sh
 :source %
 :PlugInstall
+```
+
+---
+
+### Command-Lines
+Tabulous adds the following commands available from Vim's Command-Line mode.
+
+##### TabulousRename
+Rename the current tab page label name to **`<string>`**. The new label name is remembered until the buffer associated with the label name is wiped out or you use **`TabulousRename`** again on the same label name.
+
+```vimL
+:TabulousRename <string>
 ```
 
 ---
