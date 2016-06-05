@@ -1,14 +1,17 @@
-*tabulous.txt* Lightweight Vim plugin to enhance the tabline including numbered tab page labels
+*tabulous.txt*  For Vim version 7.0+    Last change: 2016 June 4
 
+Lightweight Vim plugin to enhance the tabline including numbered tab page labels
 Author:         Steven Garcia <https://github.com/webdevel>
 License:        GNU General Public License Version 2 (GPLv2)
 Repository:     <https://github.com/webdevel/tabulous>
-Version:        0.3.0
+Version:        0.5.0
 
 CONTENTS                                            *tabulous*
 
 Introduction                                        |tabulous-introduction|
 Features                                            |tabulous-features|
+Command-Lines                                       |tabulous-command-lines|
+  Rename Tab Label                                  |TabulousRename|
 Options                                             |tabulous-options|
   Disable Tabulous                                  |loadTabulous|
   Truncate Tab Labels                               |tabulousLabelNameTruncate|
@@ -23,14 +26,17 @@ Options                                             |tabulous-options|
 Keyboard Shortcuts                                  |tabulous-shortcuts|
 Issues                                              |tabulous-issues|
 
+==============================================================================
 INTRODUCTION                                        *tabulous-introduction*
 
 This lightweight plugin is for enhancing the tabline including numbered
 tab page labels and written purely in Vim script.
 
+==============================================================================
 FEATURES                                            *tabulous-features*
 
 Shows a tab number on every tab label to quickly navigate to tabs <number>gt.
+Rename the current tab page label.  
 Tabs display an indicator when a buffer has been modified and not saved.
 Dynamically updates the filename of currently focused window in the tab page.
 Eliminates inefficient string concatenation via |printf| where possible.
@@ -38,6 +44,19 @@ Does not show filename extensions to preserve the amount of tab label space.
 Dynamic resizing of tab labels.
 Options are configurable from |.vimrc|.
 
+==============================================================================
+COMMAND-LINES                                       *tabulous-command-lines*
+
+Tabulous adds the following commands available from Vim's Command-Line mode.
+
+                                                    *TabulousRename*
+  TabulousRename~
+  Rename the current tab page label name to <string>. The new label name is
+  remembered until the buffer associated with the label name is wiped out or
+  you use TabulousRename again on the same label name.
+  `:TabulousRename` <string>
+
+==============================================================================
 OPTIONS                                             *tabulous-options*
 
 No configuration is necessary by default. However, there are options if you
@@ -46,67 +65,59 @@ added to a new line in your |.vimrc|.
 
                                                     *loadTabulous*
   Disable Tabulous~
-  This disables the plugin entirely. >
-  let loadTabulous = 1
-<
+  This disables the plugin entirely.
+  `let loadTabulous = 1`
                                                     *tabulousLabelNameTruncate*
   Truncate Tab Labels~
-  This enables or disables tab page label truncation. The default is 1 enabled. >
-  let tabulousLabelNameTruncate = 0
-<
+  This enables or disables tab page label truncation. The default is 1 enabled.
+  `let tabulousLabelNameTruncate = 0`
                                                     *tabulousCloseStr*
   Close Tab~
-  This sets the tab close string for mouse clicks. The default is X enabled. >
-  let tabulousCloseStr = ''
-<
+  This sets the tab close string for mouse clicks. The default is X enabled.
+  `let tabulousCloseStr = ''`
                                                     *tabulousLabelNameOptions*
   Tab Label Name Options~
   This sets the tab label name options which may be valid |filename-modifiers|
   recognized by the Vim command |fnamemodify|. The defaults are `:t:r` which
-  remove directories and file extension from a tab label name. >
-  let tabulousLabelNameOptions = ''
-<
+  remove directories and file extension from a tab label name.
+  `let tabulousLabelNameOptions = ''`
                                                     *tabulousLabelModifiedStr*
   Tab Label Modified~
   This sets the string that indicates the buffer associated with a tab has
-  been modified, but not yet saved. The default value is shown below. >
-  let tabulousLabelModifiedStr = '+'
-<
+  been modified, but not yet saved. The default value is shown below.
+  `let tabulousLabelModifiedStr = '+'`
                                                     *tabulousLabelLeftStr*
   Tab Label Left~
   This sets the string on the left of the tab label. The default value is
-  shown below. >
-  let tabulousLabelLeftStr = ' '
-<
+  shown below.
+  `let tabulousLabelLeftStr = ' '`
                                                     *tabulousLabelRightStr*
   Tab Label Right~
   This sets the string on the right of the tab label. The default value is
-  shown below. >
-  let tabulousLabelRightStr = ' '
-<
+  shown below.
+  `let tabulousLabelRightStr = ' '`
                                                     *tabulousLabelNumberStr*
   Tab Label Number~
   This sets the string on the right of the tab label number. The default
-  value is shown below. >
-  let tabulousLabelNumberStr = ' '
-<
+  value is shown below.
+  `let tabulousLabelNumberStr = ' '`
                                                     *tabulousLabelNameLeftStr*
   Tab Label Name Left~
   This sets the string on the left of the tab label name. The default value is
-  shown below. >
-  let tabulousLabelNameLeftStr = ''
-<
+  shown below.
+  `let tabulousLabelNameLeftStr = ''`
                                                     *tabulousLabelNameDefault*
   Tab Label Name Default~
   This sets the string for the default tab label name. The default value is
-  shown below. >
-  let tabulousLabelNameDefault = '[No Name]'
-<
+  shown below.
+  `let tabulousLabelNameDefault = '[No Name]'`
 
+==============================================================================
 SHORTCUTS                                           *tabulous-shortcuts*
 
-  TODO~
+  *TODO
 
+==============================================================================
 ISSUES                                              *tabulous-issues*
 
 This plugin is only available if 'compatible' is not set.
