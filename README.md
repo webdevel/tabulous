@@ -6,21 +6,21 @@ Lightweight Vim plugin to enhance the tabline including numbered tab page labels
 ---
 
 ### Features
-Shows the tab page number on every tab label for quickly navigating to the desired tab **`<number>gt`**.  
-Rename the current tab page label.  
-Tabs display an indicator when a buffer has been modified and not saved.  
-Dynamically updates the filename of the currently focused window in the tab page.  
-Eliminates inefficient use of string concatenation operator by using **`printf`** where possible.  
-Does not show filename extensions to preserve the amount of tab label space.  
-Performs runtime calculation of maximum tab label length and truncates accordingly (Dynamic resizing of tab labels).  
-Options are configurable from **`.vimrc`**.  
+Shows the tab page number on every tab label for quickly navigating to the desired tab **`<number>gt`**.
+Rename the current tab page label.
+Tabs display an indicator when a buffer has been modified and not saved.
+Dynamically updates the filename of the currently focused window in the tab page.
+Eliminates inefficient use of string concatenation operator by using **`printf`** where possible.
+Does not show filename extensions to preserve the amount of tab label space.
+Performs runtime calculation of maximum tab label length and truncates accordingly (Dynamic resizing of tab labels).
+Options are configurable from **`.vimrc`**.
 
 ##### Planned Features
-Enhancement of tab label truncation algorithm  
-Toggle tab page numbers on and off by keyboard shortcut  
-Toggle tab label filename extensions on and off by keyboard shortcut  
-Toggle tab label truncation on and off by keyboard shortcut  
-> In progress: keyboard shortcuts and enhancement of tab label truncation algorithm.  
+Enhancement of tab label truncation algorithm
+Toggle tab page numbers on and off by keyboard shortcut
+Toggle tab label filename extensions on and off by keyboard shortcut
+Toggle tab label truncation on and off by keyboard shortcut
+> In progress: keyboard shortcuts and enhancement of tab label truncation algorithm.
 
 ---
 
@@ -144,25 +144,25 @@ This sets the string on the left of the tab label. The default value is shown be
 ```sh
 let tabulousLabelLeftStr = ' '
 ```
- 
+
 ##### Tab Label Right
 This sets the string on the right of the tab label. The default value is shown below.
 ```sh
 let tabulousLabelRightStr = ' '
 ```
- 
+
 ##### Tab Label Number
 This sets the string on the right of the tab label number. The default value is shown below.
 ```sh
 let tabulousLabelNumberStr = ' '
 ```
- 
+
 ##### Tab Label Name Left
 This sets the string on the left of the tab label name. The default value is shown below.
 ```sh
 let tabulousLabelNameLeftStr = ''
 ```
- 
+
 ##### Tab Label Default Name
 This sets the default tab label name. The default value is shown below.
 ```sh
@@ -172,7 +172,14 @@ let tabulousLabelNameDefault = '[No Name]'
 ---
 
 ### Keyboard Shortcuts
-**_TODO_**
+
+There are no default mappings for renaming your tabs, but you can map it easily like this:
+
+```vimL
+map <C-t> :call g:tabulous#renameTab()<cr>
+```
+
+This maps `Ctrl + t` to rename your tab.
 
 ---
 

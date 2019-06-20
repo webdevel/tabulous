@@ -25,13 +25,13 @@ let g:loadTabulous = 1
 function s:initVariable(var, val) abort
 
   if !exists(a:var)
-    
+
     execute printf("let %s = \'%s\'", a:var, a:val)
 
     return 1
 
   endif
-  
+
   return 0
 
 endfunction
@@ -94,7 +94,7 @@ function s:getTabline() abort
       \g:tabulousCloseStr
     \))
 
-    " divide columns by tab page count for even distribution 
+    " divide columns by tab page count for even distribution
     let tabNameLengthMax = (&columns-usedLength)/(tabPageCount > 0 ? tabPageCount : 1)
 
     " make length a zero or greater number
@@ -190,6 +190,15 @@ function s:removeUserTabLabelName(bufferNum) abort
 
 endfunction
 
+" ask for a name and rename the current tab
+function! g:tabulous#renameTab()
+  call inputsave()
+  let name = input('Enter new name: ')
+  call inputrestore()
+
+  call s:setUserTabLabelName(name)
+endfunction
+
 " command-line :TabulousRename <string> to rename current tab page label as specified
 command! -nargs=1 TabulousRename call <SID>setUserTabLabelName(<q-args>)
 
@@ -202,4 +211,5 @@ augroup Tabulous
 augroup END
 
 call s:setTabline()
+
 
