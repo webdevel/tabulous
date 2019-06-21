@@ -36,7 +36,7 @@ tab page labels and written purely in Vim script.
 FEATURES                                            *tabulous-features*
 
 Shows a tab number on every tab label to quickly navigate to tabs <number>gt.
-Rename the current tab page label.  
+Rename the current tab page label.
 Tabs display an indicator when a buffer has been modified and not saved.
 Dynamically updates the filename of currently focused window in the tab page.
 Eliminates inefficient string concatenation via |printf| where possible.
@@ -115,7 +115,10 @@ added to a new line in your |.vimrc|.
 ==============================================================================
 SHORTCUTS                                           *tabulous-shortcuts*
 
-  *TODO
+  There are no default mappings for renaming your tabs, but you can map it
+  easily like this:
+  `map <C-t> :call g:tabulous#renameTab()<cr>`
+  This maps `Ctrl + t` to rename your tab.
 
 ==============================================================================
 ISSUES                                              *tabulous-issues*
