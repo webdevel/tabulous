@@ -169,6 +169,13 @@ This sets the default tab label name. The default value is shown below.
 let tabulousLabelNameDefault = '[No Name]'
 ```
 
+##### Tab Label Rename Fixed
+The default behaviour is renaming the tab for the current buffer.
+This enables the ability of renaming the tab and use the same name regardless of the current buffer.
+```sh
+let g:tabulousTabLabelRenameFixed = 0
+```
+
 ---
 
 ### Keyboard Shortcuts

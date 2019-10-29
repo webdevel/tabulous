@@ -112,6 +112,11 @@ added to a new line in your |.vimrc|.
   shown below.
   `let tabulousLabelNameDefault = '[No Name]'`
 
+  Tab Label Rename Fixed~
+  The default behaviour is renaming the tab for the current buffer.
+  This enables the ability of renaming the tab and use the same name regardless of the current buffer.
+  `let g:tabulousTabLabelRenameFixed = 0`
+
 ==============================================================================
 SHORTCUTS                                           *tabulous-shortcuts*
 

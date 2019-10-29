@@ -20,32 +20,17 @@ endif
 
 let g:loadTabulous = 1
 
-" inspired by similar nerd tree function
-" initialize variables to sane defaults if not set already
-function s:initVariable(var, val) abort
-
-  if !exists(a:var)
-
-    execute printf("let %s = \'%s\'", a:var, a:val)
-
-    return 1
-
-  endif
-
-  return 0
-
-endfunction
-
 " initialize defaults
-call s:initVariable('g:tabulousCloseStr', 'X')
-call s:initVariable('g:tabulousLabelModifiedStr', '+')
-call s:initVariable('g:tabulousLabelLeftStr', ' ')
-call s:initVariable('g:tabulousLabelRightStr', ' ')
-call s:initVariable('g:tabulousLabelNumberStr', ' ')
-call s:initVariable('g:tabulousLabelNameLeftStr', '')
-call s:initVariable('g:tabulousLabelNameOptions', ':t:r')
-call s:initVariable('g:tabulousLabelNameDefault', '[No Name]')
-call s:initVariable('g:tabulousLabelNameTruncate', 1)
+let g:tabulousCloseStr = get(g:, 'tabulousCloseStr', 'X')
+let g:tabulousLabelModifiedStr = get(g:,'tabulousLabelModifiedStr', '+')
+let g:tabulousLabelLeftStr = get(g:,'tabulousLabelLeftStr', ' ')
+let g:tabulousLabelRightStr = get(g:, 'tabulousLabelRightStr', ' ')
+let g:tabulousLabelNumberStr = get(g:,'tabulousLabelNumberStr', ' ')
+let g:tabulousLabelNameLeftStr = get(g:,'tabulousLabelNameLeftStr', '')
+let g:tabulousLabelNameOptions = get(g:,'tabulousLabelNameOptions', ':t:r')
+let g:tabulousLabelNameDefault = get(g:,'tabulousLabelNameDefault', '[No Name]')
+let g:tabulousLabelNameTruncate = get(g:, 'tabulousLabelNameTruncate', 1)
+let g:tabulousTabLabelRenameFixed = get(g:, 'tabulousTabLabelRenameFixed', 0)
 let s:userTabLabelNameDict = {}
 
 " build tabline and return it
@@ -77,8 +62,11 @@ function s:getTabline() abort
     " get the modified tab name or default tab name
     let tabNameStr = (bufferName != '' ? fnamemodify(bufferName, g:tabulousLabelNameOptions) : g:tabulousLabelNameDefault)
 
+    " decide if the name if for the tab or for the buffer
+    let nameIndex = g:tabulousTabLabelRenameFixed ? tabNum : bufferNum
+
     " if user specified a tab label name for this buffer, use it
-    let tabNameStr = has_key(s:userTabLabelNameDict, bufferNum) ? s:userTabLabelNameDict[bufferNum] : tabNameStr
+    let tabNameStr = has_key(s:userTabLabelNameDict, nameIndex) ? s:userTabLabelNameDict[nameIndex] : tabNameStr
 
     " used to adjust number of available columns
     " based on tab label length and tab count
@@ -157,8 +145,11 @@ endfunction
 
 function s:setUserTabLabelName(name) abort
 
+  " decide if the name if for the tab or for the buffer
+  let nameIndex = g:tabulousTabLabelRenameFixed  ? tabpagenr() : s:getCurrentBufferNumber(tabpagenr())
+
   " store user specified tab label name keyed by the current buffer number
-  let s:userTabLabelNameDict[s:getCurrentBufferNumber(tabpagenr())] = a:name
+  let s:userTabLabelNameDict[nameIndex] = a:name
 
   " set the tabline with the user specified tab label name
   call s:setTabline()
@@ -182,9 +173,12 @@ endfunction
 " remove unused entries from user tab label names
 function s:removeUserTabLabelName(bufferNum) abort
 
-  if has_key(s:userTabLabelNameDict, a:bufferNum)
+  " decide if the name if for the tab or for the buffer
+  let nameIndex = g:tabulousTabLabelRenameFixed  ? tabpagenr() : a:bufferNum
 
-    unlet s:userTabLabelNameDict[a:bufferNum]
+  if has_key(s:userTabLabelNameDict, nameIndex)
+
+    unlet s:userTabLabelNameDict[nameIndex]
 
   endif
 
