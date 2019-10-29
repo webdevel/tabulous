@@ -20,32 +20,16 @@ endif
 
 let g:loadTabulous = 1
 
-" inspired by similar nerd tree function
-" initialize variables to sane defaults if not set already
-function s:initVariable(var, val) abort
-
-  if !exists(a:var)
-
-    execute printf("let %s = \'%s\'", a:var, a:val)
-
-    return 1
-
-  endif
-
-  return 0
-
-endfunction
-
 " initialize defaults
-call s:initVariable('g:tabulousCloseStr', 'X')
-call s:initVariable('g:tabulousLabelModifiedStr', '+')
-call s:initVariable('g:tabulousLabelLeftStr', ' ')
-call s:initVariable('g:tabulousLabelRightStr', ' ')
-call s:initVariable('g:tabulousLabelNumberStr', ' ')
-call s:initVariable('g:tabulousLabelNameLeftStr', '')
-call s:initVariable('g:tabulousLabelNameOptions', ':t:r')
-call s:initVariable('g:tabulousLabelNameDefault', '[No Name]')
-call s:initVariable('g:tabulousLabelNameTruncate', 1)
+let g:tabulousCloseStr = get(g:, 'tabulousCloseStr', 'X')
+let g:tabulousLabelModifiedStr = get(g:,'tabulousLabelModifiedStr', '+')
+let g:tabulousLabelLeftStr = get(g:,'tabulousLabelLeftStr', ' ')
+let g:tabulousLabelRightStr = get(g:, 'tabulousLabelRightStr', ' ')
+let g:tabulousLabelNumberStr = get(g:,'tabulousLabelNumberStr', ' ')
+let g:tabulousLabelNameLeftStr = get(g:,'tabulousLabelNameLeftStr', '')
+let g:tabulousLabelNameOptions = get(g:,'tabulousLabelNameOptions', ':t:r')
+let g:tabulousLabelNameDefault = get(g:,'tabulousLabelNameDefault', '[No Name]')
+let g:tabulousLabelNameTruncate = get(g:, 'tabulousLabelNameTruncate', 1)
 let s:userTabLabelNameDict = {}
 
 " build tabline and return it
