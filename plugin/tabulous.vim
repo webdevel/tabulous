@@ -30,6 +30,7 @@ let g:tabulousLabelNameLeftStr = get(g:,'tabulousLabelNameLeftStr', '')
 let g:tabulousLabelNameOptions = get(g:,'tabulousLabelNameOptions', ':t:r')
 let g:tabulousLabelNameDefault = get(g:,'tabulousLabelNameDefault', '[No Name]')
 let g:tabulousLabelNameTruncate = get(g:, 'tabulousLabelNameTruncate', 1)
+let g:tabulousFixedTabRenamed = get(g:, 'tabulousFixedTabRenamed', 0)
 let s:userTabLabelNameDict = {}
 
 " build tabline and return it
@@ -61,8 +62,11 @@ function s:getTabline() abort
     " get the modified tab name or default tab name
     let tabNameStr = (bufferName != '' ? fnamemodify(bufferName, g:tabulousLabelNameOptions) : g:tabulousLabelNameDefault)
 
+    " decide if the name if for the tab or for the buffer
+    let nameIndex = g:tabulousFixedTabRenamed ? tabNum : bufferNum
+
     " if user specified a tab label name for this buffer, use it
-    let tabNameStr = has_key(s:userTabLabelNameDict, bufferNum) ? s:userTabLabelNameDict[bufferNum] : tabNameStr
+    let tabNameStr = has_key(s:userTabLabelNameDict, nameIndex) ? s:userTabLabelNameDict[nameIndex] : tabNameStr
 
     " used to adjust number of available columns
     " based on tab label length and tab count
@@ -141,8 +145,11 @@ endfunction
 
 function s:setUserTabLabelName(name) abort
 
+  " decide if the name if for the tab or for the buffer
+  let nameIndex = g:tabulousFixedTabRenamed ? tabpagenr() : s:getCurrentBufferNumber(tabpagenr())
+
   " store user specified tab label name keyed by the current buffer number
-  let s:userTabLabelNameDict[s:getCurrentBufferNumber(tabpagenr())] = a:name
+  let s:userTabLabelNameDict[nameIndex] = a:name
 
   " set the tabline with the user specified tab label name
   call s:setTabline()
@@ -166,9 +173,12 @@ endfunction
 " remove unused entries from user tab label names
 function s:removeUserTabLabelName(bufferNum) abort
 
-  if has_key(s:userTabLabelNameDict, a:bufferNum)
+  " decide if the name if for the tab or for the buffer
+  let nameIndex = g:tabulousFixedTabRenamed ? tabpagenr() : a:bufferNum
 
-    unlet s:userTabLabelNameDict[a:bufferNum]
+  if has_key(s:userTabLabelNameDict, nameIndex)
+
+    unlet s:userTabLabelNameDict[nameIndex]
 
   endif
 
