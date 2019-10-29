@@ -30,7 +30,7 @@ let g:tabulousLabelNameLeftStr = get(g:,'tabulousLabelNameLeftStr', '')
 let g:tabulousLabelNameOptions = get(g:,'tabulousLabelNameOptions', ':t:r')
 let g:tabulousLabelNameDefault = get(g:,'tabulousLabelNameDefault', '[No Name]')
 let g:tabulousLabelNameTruncate = get(g:, 'tabulousLabelNameTruncate', 1)
-let g:tabulousFixedTabRenamed = get(g:, 'tabulousFixedTabRenamed', 0)
+let g:tabulousTabLabelRenameFixed = get(g:, 'tabulousTabLabelRenameFixed', 0)
 let s:userTabLabelNameDict = {}
 
 " build tabline and return it
@@ -63,7 +63,7 @@ function s:getTabline() abort
     let tabNameStr = (bufferName != '' ? fnamemodify(bufferName, g:tabulousLabelNameOptions) : g:tabulousLabelNameDefault)
 
     " decide if the name if for the tab or for the buffer
-    let nameIndex = g:tabulousFixedTabRenamed ? tabNum : bufferNum
+    let nameIndex = g:tabulousTabLabelRenameFixed ? tabNum : bufferNum
 
     " if user specified a tab label name for this buffer, use it
     let tabNameStr = has_key(s:userTabLabelNameDict, nameIndex) ? s:userTabLabelNameDict[nameIndex] : tabNameStr
@@ -146,7 +146,7 @@ endfunction
 function s:setUserTabLabelName(name) abort
 
   " decide if the name if for the tab or for the buffer
-  let nameIndex = g:tabulousFixedTabRenamed ? tabpagenr() : s:getCurrentBufferNumber(tabpagenr())
+  let nameIndex = g:tabulousTabLabelRenameFixed  ? tabpagenr() : s:getCurrentBufferNumber(tabpagenr())
 
   " store user specified tab label name keyed by the current buffer number
   let s:userTabLabelNameDict[nameIndex] = a:name
@@ -174,7 +174,7 @@ endfunction
 function s:removeUserTabLabelName(bufferNum) abort
 
   " decide if the name if for the tab or for the buffer
-  let nameIndex = g:tabulousFixedTabRenamed ? tabpagenr() : a:bufferNum
+  let nameIndex = g:tabulousTabLabelRenameFixed  ? tabpagenr() : a:bufferNum
 
   if has_key(s:userTabLabelNameDict, nameIndex)
 
