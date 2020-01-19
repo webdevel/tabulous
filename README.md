@@ -112,61 +112,61 @@ No configuration is necessary by default. However, there are options if you want
 ##### Disable Plugin
 This disables the plugin entirely.
 ```sh
-let loadTabulous = 1
+let g:loadTabulous = 1
 ```
 
 ##### Tab Label Truncation
 This enables or disables tab page label truncation. The default is **`1`** enabled.
 ```sh
-let tabulousLabelNameTruncate = 0
+let g:tabulousLabelNameTruncate = 0
 ```
 
 ##### Tab Close
 This sets the tab close string for mouse clicks. The default is **`X`** enabled.
 ```sh
-let tabulousCloseStr = ''
+let g:tabulousCloseStr = ''
 ```
 
 ##### Tab Label Name Options
 This sets the tab label name options which may be valid [filename-modifiers] recognized by the Vim command **`fnamemodify`**. The defaults are **`:t:r`** which remove directories and file extension from a tab label name.
 ```sh
-let tabulousLabelNameOptions = ''
+let g:tabulousLabelNameOptions = ''
 ```
 
 ##### Tab Label Modified
 This sets the string that indicates the buffer associated with a tab has been modified, but not yet saved. The default value is shown below.
 ```sh
-let tabulousLabelModifiedStr = '+'
+let g:tabulousLabelModifiedStr = '+'
 ```
 
 ##### Tab Label Left
 This sets the string on the left of the tab label. The default value is shown below.
 ```sh
-let tabulousLabelLeftStr = ' '
+let g:tabulousLabelLeftStr = ' '
 ```
 
 ##### Tab Label Right
 This sets the string on the right of the tab label. The default value is shown below.
 ```sh
-let tabulousLabelRightStr = ' '
+let g:tabulousLabelRightStr = ' '
 ```
 
 ##### Tab Label Number
 This sets the string on the right of the tab label number. The default value is shown below.
 ```sh
-let tabulousLabelNumberStr = ' '
+let g:tabulousLabelNumberStr = ' '
 ```
 
 ##### Tab Label Name Left
 This sets the string on the left of the tab label name. The default value is shown below.
 ```sh
-let tabulousLabelNameLeftStr = ''
+let g:tabulousLabelNameLeftStr = ''
 ```
 
 ##### Tab Label Default Name
 This sets the default tab label name. The default value is shown below.
 ```sh
-let tabulousLabelNameDefault = '[No Name]'
+let g:tabulousLabelNameDefault = '[No Name]'
 ```
 
 ---
