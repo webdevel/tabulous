@@ -135,7 +135,7 @@ function s:getTabline() abort
   return printf(
     \'%s%%#TabLineFill#%%T%s',
     \tablineStr,
-    \(tabPageCount > 1 ? printf('%s%s', '%=%#TabLine#%9999X', g:tabulousCloseStr) : '')
+    \(tabPageCount > 1 ? printf('%s%s', '%=%#TabLine#%999X', g:tabulousCloseStr) : '')
   \)
 
 endfunction
